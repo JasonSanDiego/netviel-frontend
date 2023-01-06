@@ -113,10 +113,11 @@ export class NetVielMessage extends LitElement {
           <paper-icon-button icon="file-download"></paper-icon-button>
         </a>
       </div>
-      <p class="from">${this.message.from}</p>
+      <p class="from">From: ${this.message.from}</p>
       <p class="to">To: ${this.message.to}</p>
       ${this.message.cc ? html`<p class="to">CC: ${this.message.cc}</p>` : ''}
       ${this.message.bcc ? html`<p class="to">BCC: ${this.message.bcc}</p>` : ''}
+      <p class="from">Subject: ${this.message.subject}</p>
       <div class="content">
         <div id="content-html"></div>
         <div id="content-text"></div>
