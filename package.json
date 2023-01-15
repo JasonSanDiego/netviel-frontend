@@ -15,7 +15,7 @@
     "test:bs": "karma start karma.bs.config.js --compatibility all --coverage",
     "start:build": "cd dist && es-dev-server --open",
     "build": "rimraf dist && rollup -c rollup.config.js",
-    "start": "es-dev-server --app-index index.html --node-resolve --open --watch",
+    "start": "es-dev-server --app-index index.html --node-resolve --open --watch --port 8002",
     "start:compatibility": "es-dev-server --app-index index.html --compatibility all --node-resolve --open --watch"
   },
   "devDependencies": {

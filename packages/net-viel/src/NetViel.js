@@ -142,6 +142,7 @@ export function apiHost() {
   if ('ENV' == 'production') {
     return "";
   } else {
-    return "http://127.0.0.1:5000";
+//    return "http://127.0.0.1:5000";
+	return document.location + 'nv-api';
   }
 }

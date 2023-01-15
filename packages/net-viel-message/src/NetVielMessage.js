@@ -26,7 +26,7 @@ export class NetVielMessage extends LitElement {
         margin-bottom: 0em;
         margin-top: 0em;
       }
-      .to {
+      .subject, .to {
         font-weight: 400;
         font-size: 0.9em;
         margin-bottom: 0em;
@@ -99,7 +99,7 @@ export class NetVielMessage extends LitElement {
     if (this.message.content_type == 'text/html') {
       this.shadowRoot.querySelector('#content-html').innerHTML = this.message.content;
     } else {
-      this.shadowRoot.querySelector('#content-text').innerHTML = '<pre>' + this.message.content + '</pre>';
+      this.shadowRoot.querySelector('#content-text').innerHTML = `<pre>${  this.message.content  }</pre>`;
     }
 
   }
@@ -117,7 +117,7 @@ export class NetVielMessage extends LitElement {
       <p class="to">To: ${this.message.to}</p>
       ${this.message.cc ? html`<p class="to">CC: ${this.message.cc}</p>` : ''}
       ${this.message.bcc ? html`<p class="to">BCC: ${this.message.bcc}</p>` : ''}
-      <p class="from">Subject: ${this.message.subject}</p>
+      <p class="subject">Subject: ${this.message.subject}</p>
       <div class="content">
         <div id="content-html"></div>
         <div id="content-text"></div>
@@ -125,9 +125,7 @@ export class NetVielMessage extends LitElement {
       ${this.message.attachments.length > 0 ? html`<div class="attachments">
         <h3>Attachments</h3>
         <ul>
-        ${this.message.attachments.map((attachment, i) => {
-      return html`<li><a href="${apiHost()}/api/attachment/${this.message.message_id}/${i}" target="_new">${attachment.filename}</a></li>`;
-    })}
+        ${this.message.attachments.map((attachment, i) => html`<li><a href="${apiHost()}/api/attachment/${this.message.message_id}/${i}" target="_new">${attachment.filename}</a></li>`)}
         </ul>
       </div>` : ''}
     </div>
